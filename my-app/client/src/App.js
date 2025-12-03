@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Plus } from 'lucide-react';
 import Navbar from './components/Navbar';
 import Post from './components/Post';
+import CreatePostModal from './components/CreatePostModal';
+import { Button } from './components/ui/button';
 import './App.css';
 
 function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  
   // Sample posts data
-  const posts = [
+  const [posts, setPosts] = useState([
     {
       id: 1,
       author: "Computer Science Club",
@@ -108,7 +113,16 @@ function App() {
       comments: 0,
       shares: 0
     }
-  ];
+  ]);
+
+  const handleCreatePost = (newPost) => {
+    const postWithId = {
+      ...newPost,
+      id: posts.length + 1,
+      comments: 0
+    };
+    setPosts([postWithId, ...posts]);
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition-colors">
@@ -136,6 +150,22 @@ function App() {
           </button>
         </div>
       </main>
+
+      {/* Floating Action Button */}
+      <Button
+        onClick={() => setIsModalOpen(true)}
+        className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white z-40 hover:shadow-xl transition-all hover:scale-110"
+        title="Create Post"
+      >
+        <Plus className="h-8 w-8" />
+      </Button>
+
+      {/* Create Post Modal */}
+      <CreatePostModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSubmit={handleCreatePost}
+      />
     </div>
   );
 }
