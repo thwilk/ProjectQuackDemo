@@ -1,9 +1,4 @@
-import React, { useState } from 'react';
-import { Plus } from 'lucide-react';
-import Navbar from './components/Navbar';
-import Post from './components/Post';
-import CreatePostModal from './components/CreatePostModal';
-import { Button } from './components/ui/button';
+import logo from './logo.svg';
 import './App.css';
 
 function App() {
@@ -125,47 +120,21 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition-colors">
-      <Navbar />
-      
-      {/* Main Content Area */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Feed Header */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Campus Feed</h2>
-          <p className="text-gray-600 dark:text-gray-400">Discover events, opportunities, and connect with your community</p>
-        </div>
-
-        {/* Posts Feed */}
-        <div className="space-y-6">
-          {posts.map(post => (
-            <Post key={post.id} post={post} />
-          ))}
-        </div>
-
-        {/* Load More */}
-        <div className="text-center mt-8">
-          <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium">
-            Load More Posts
-          </button>
-        </div>
-      </main>
-
-      {/* Floating Action Button */}
-      <Button
-        onClick={() => setIsModalOpen(true)}
-        className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg bg-blue-600 hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 text-white z-40 hover:shadow-xl transition-all hover:scale-110"
-        title="Create Post"
-      >
-        <Plus className="h-8 w-8" />
-      </Button>
-
-      {/* Create Post Modal */}
-      <CreatePostModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSubmit={handleCreatePost}
-      />
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="logo" />
+        <p>
+          Edit <code>src/App.js</code> and save to reload.
+        </p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </header>
     </div>
   );
 }
