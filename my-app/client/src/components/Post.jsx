@@ -57,11 +57,24 @@ const Post = ({ post }) => {
               </div>
             </div>
           </div>
-          {post.category && (
-            <Badge variant="secondary" className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300">
-              {post.category}
-            </Badge>
-          )}
+          
+          {/* Tags Display - supports both single category and multiple tags */}
+          <div className="flex flex-wrap gap-2 max-w-xs justify-end">
+            {post.category && !post.tags && (
+              <Badge variant="secondary" className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300">
+                {post.category}
+              </Badge>
+            )}
+            {post.tags && post.tags.length > 0 && post.tags.map((tag, index) => (
+              <Badge 
+                key={index} 
+                variant="secondary" 
+                className="bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300 text-xs"
+              >
+                {tag}
+              </Badge>
+            ))}
+          </div>
         </div>
       </CardHeader>
 
