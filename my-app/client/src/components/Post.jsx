@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Heart, MessageCircle, Share2, Calendar, MapPin, Users } from 'lucide-react';
+import { Heart, MessageCircle, Share2, Calendar, MapPin, Users, Send } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
@@ -10,6 +10,10 @@ const Post = ({ post }) => {
   const [liked, setLiked] = useState(false);
   const [rsvped, setRsvped] = useState(false);
   const [likes, setLikes] = useState(post.likes);
+  const [attendees, setAttendees] = useState(post.attendees);
+  const [showCommentBox, setShowCommentBox] = useState(false);
+  const [commentText, setCommentText] = useState('');
+  const [comments, setComments] = useState([]);
 
   const handleLike = () => {
     setLiked(!liked);
@@ -18,6 +22,18 @@ const Post = ({ post }) => {
 
   const handleRSVP = () => {
     setRsvped(!rsvped);
+    setAttendees(rsvped ? attendees - 1 : attendees + 1);
+  };
+
+  const handleCommentClick = () => {
+    setShowCommentBox(!showCommentBox);
+  };
+
+  const handleCommentSubmit = () => {
+    if (commentText.trim()) {
+      setComments([...comments, commentText]);
+      setCommentText('');
+    }
   };
 
   return (
@@ -69,10 +85,10 @@ const Post = ({ post }) => {
                 <span>{post.location}</span>
               </div>
             )}
-            {post.attendees && (
+            {post.eventDate && (
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-blue-600" />
-                <span>{post.attendees} attending</span>
+                <span>{attendees} attending</span>
               </div>
             )}
           </div>
@@ -97,8 +113,8 @@ const Post = ({ post }) => {
         <div className="flex items-center justify-between text-sm text-gray-600">
           <span>{likes} likes</span>
           <div className="flex gap-4">
-            <span>{post.comments} comments</span>
-            {post.shares && <span>{post.shares} shares</span>}
+            <span>{comments.length} comments</span>
+            {post.shares !== undefined && <span>{post.shares} shares</span>}
           </div>
         </div>
       </CardContent>
@@ -118,7 +134,12 @@ const Post = ({ post }) => {
             Like
           </Button>
           
-          <Button variant="ghost" size="sm" className="flex-1 text-gray-600 hover:text-blue-600">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={handleCommentClick}
+            className={`flex-1 ${showCommentBox ? 'text-blue-600 bg-blue-50' : 'text-gray-600'} hover:text-blue-600`}
+          >
             <MessageCircle className="h-5 w-5 mr-2" />
             Comment
           </Button>
@@ -141,6 +162,67 @@ const Post = ({ post }) => {
           </Button>
         </div>
       </CardFooter>
+
+      {/* Comment Box */}
+      {showCommentBox && (
+        <>
+          <Separator />
+          <CardContent className="pt-4 pb-4">
+            <div className="space-y-3">
+              {/* Display existing comments */}
+              {comments.length > 0 && (
+                <div className="space-y-2 mb-3">
+                  {comments.map((comment, index) => (
+                    <div key={index} className="flex gap-3 p-3 bg-gray-50 rounded-lg">
+                      <Avatar className="h-8 w-8">
+                        <AvatarFallback className="bg-blue-600 text-white text-xs">
+                          You
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="flex-1">
+                        <p className="text-sm font-semibold text-gray-900">You</p>
+                        <p className="text-sm text-gray-700">{comment}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+              
+              {/* Comment input */}
+              <div className="flex gap-2 items-start">
+                <Avatar className="h-10 w-10">
+                  <AvatarFallback className="bg-blue-600 text-white">
+                    You
+                  </AvatarFallback>
+                </Avatar>
+                <div className="flex-1 flex gap-2">
+                  <textarea
+                    value={commentText}
+                    onChange={(e) => setCommentText(e.target.value)}
+                    placeholder="Write a comment..."
+                    className="flex-1 min-h-[80px] p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        handleCommentSubmit();
+                      }
+                    }}
+                  />
+                  <Button 
+                    onClick={handleCommentSubmit}
+                    disabled={!commentText.trim()}
+                    className="bg-blue-600 hover:bg-blue-700 text-white"
+                    size="icon"
+                  >
+                    <Send className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+              <p className="text-xs text-gray-500 ml-12">Press Enter to post or Shift+Enter for new line</p>
+            </div>
+          </CardContent>
+        </>
+      )}
     </Card>
   );
 };

@@ -17,11 +17,11 @@ function App() {
       description: "Join us for a 24-hour hackathon where you'll collaborate with fellow students to create innovative solutions. All skill levels welcome! Free food, prizes, and great networking opportunities await.",
       eventDate: "Dec 15, 2025 • 9:00 AM",
       location: "Computer Science Building, Room 101",
-      attendees: 127,
+      attendees: 0,
       image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80",
-      likes: 234,
-      comments: 45,
-      shares: 23
+      likes: 0,
+      comments: 0,
+      shares: 0
     },
     {
       id: 2,
@@ -34,11 +34,11 @@ function App() {
       description: "Get ready for the most magical night of the semester! Join us for music, dancing, hot cocoa, and winter festivities. Don't miss out on this amazing celebration with your fellow students!",
       eventDate: "Dec 20, 2025 • 7:00 PM",
       location: "Student Union Ballroom",
-      attendees: 312,
+      attendees: 0,
       image: "https://images.unsplash.com/photo-1482575832494-771f74bf6857?w=800&q=80",
-      likes: 456,
-      comments: 67,
-      shares: 45
+      likes: 0,
+      comments: 0,
+      shares: 0
     },
     {
       id: 3,
@@ -51,11 +51,11 @@ function App() {
       description: "Connect with top employers from across the nation! This is your chance to network, interview, and land internships or full-time positions. Dress professionally and bring plenty of resumes.",
       eventDate: "Jan 25, 2026 • 10:00 AM - 4:00 PM",
       location: "Main Arena",
-      attendees: 523,
+      attendees: 0,
       image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-      likes: 389,
-      comments: 52,
-      shares: 67
+      likes: 0,
+      comments: 0,
+      shares: 0
     },
     {
       id: 4,
@@ -68,11 +68,11 @@ function App() {
       description: "We're looking for motivated students to join our marine biology research team. This is a paid position with flexible hours that will give you hands-on experience in a cutting-edge lab environment.",
       eventDate: "Applications due: Dec 31, 2025",
       location: "Life Sciences Building",
-      attendees: 45,
+      attendees: 0,
       image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=800&q=80",
-      likes: 178,
-      comments: 34,
-      shares: 19
+      likes: 0,
+      comments: 0,
+      shares: 0
     },
     {
       id: 5,
@@ -85,11 +85,11 @@ function App() {
       description: "Experience flavors from around the world! Our annual food festival features authentic dishes from over 30 countries, cultural performances, and a chance to celebrate our diverse community.",
       eventDate: "Jan 15, 2026 • 5:00 PM",
       location: "Campus Green (Weather permitting)",
-      attendees: 678,
+      attendees: 0,
       image: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80",
-      likes: 892,
-      comments: 123,
-      shares: 156
+      likes: 0,
+      comments: 0,
+      shares: 0
     },
     {
       id: 6,
@@ -102,11 +102,11 @@ function App() {
       description: "Start your semester off right! Join us for free yoga and meditation sessions every Monday, Wednesday, and Friday. All levels welcome - bring your own mat or borrow one of ours.",
       eventDate: "Starting Jan 10, 2026 • 7:00 AM",
       location: "Recreation Center, Studio A",
-      attendees: 234,
+      attendees: 0,
       image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80",
-      likes: 445,
-      comments: 28,
-      shares: 34
+      likes: 0,
+      comments: 0,
+      shares: 0
     }
   ];
 
