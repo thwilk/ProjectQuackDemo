@@ -111,15 +111,15 @@ function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50">
+    <div className="min-h-screen bg-gradient-to-br from-red-50 via-white to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-900 transition-colors">
       <Navbar />
       
       {/* Main Content Area */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Feed Header */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">Campus Feed</h2>
-          <p className="text-gray-600">Discover events, opportunities, and connect with your community</p>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Campus Feed</h2>
+          <p className="text-gray-600 dark:text-gray-400">Discover events, opportunities, and connect with your community</p>
         </div>
 
         {/* Posts Feed */}
@@ -131,7 +131,7 @@ function App() {
 
         {/* Load More */}
         <div className="text-center mt-8">
-          <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium">
+          <button className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 transition-colors font-medium">
             Load More Posts
           </button>
         </div>
